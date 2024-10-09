@@ -7,6 +7,7 @@ package com.mycompany.utils;
 import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -33,5 +34,10 @@ public class DateUtil {
             e.printStackTrace();  // Handle exception if date parsing fails
         }
         return date;
+    }
+    public static String GetTodayAsString(){
+        Date today = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(today);
     }
 }

@@ -15,17 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdvanceDAO {
-    private Connection conn;
 
     // Constructor to establish the database connection
     public AdvanceDAO() {
-         conn = SQLConnection.connect();
     }
 
     // Method to insert a new advance record
-    public boolean addAdvance(Advance advance) throws SQLException {
+    public static boolean addAdvance(Advance advance) throws SQLException {
         String sql = "INSERT INTO Advance (employeeID, advancedate, amount, resolved, description) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, advance.getEmployeeID());
             pstmt.setString(2, advance.getDate());
             pstmt.setDouble(3, advance.getAmount());
@@ -34,12 +32,13 @@ public class AdvanceDAO {
             pstmt.executeUpdate();
             return true;
         }
+        
     }
 
     // Method to fetch an advance record by advanceID
-    public Advance getAdvanceById(int advanceID) throws SQLException {
+    public static Advance getAdvanceById(int advanceID) throws SQLException {
         String sql = "SELECT * FROM Advance WHERE ID = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, advanceID);
             ResultSet rs = pstmt.executeQuery();
 
@@ -56,10 +55,10 @@ public class AdvanceDAO {
     }
 
     // Method to get all advance records
-    public List<Advance> getAllAdvances() throws SQLException {
+    public static List<Advance> getAllAdvances() throws SQLException {
         List<Advance> advances = new ArrayList<>();
         String sql = "SELECT * FROM Advance";
-        try (Statement stmt = conn.createStatement();
+        try (Connection conn = SQLConnection.connect();Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
@@ -77,9 +76,9 @@ String description = rs.getString("Description");
     }
 
     // Method to update an advance record
-    public void updateAdvance(Advance advance, int advanceID) throws SQLException {
+    public static void updateAdvance(Advance advance, int advanceID) throws SQLException {
         String sql = "UPDATE Advance SET employeeID = ?, advancedate = ?, amount = ?, resolved = ?, Description = ? WHERE ID = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect();PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, advance.getEmployeeID());
             pstmt.setString(2, advance.getDate());
             pstmt.setDouble(3, advance.getAmount());
@@ -91,18 +90,11 @@ String description = rs.getString("Description");
     }
 
     // Method to delete an advance record by advanceID
-    public void deleteAdvance(int advanceID) throws SQLException {
+    public static void deleteAdvance(int advanceID) throws SQLException {
         String sql = "DELETE FROM Advance WHERE ID = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect();PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, advanceID);
             pstmt.executeUpdate();
-        }
-    }
-
-    // Close the database connection
-    public void close() throws SQLException {
-        if (conn != null && !conn.isClosed()) {
-            conn.close();
         }
     }
 }

@@ -16,16 +16,14 @@ import java.util.List;
 
 public class OtherDeductionsDAO {
 
-    private Connection connection;
 
     public OtherDeductionsDAO() {
-        this.connection = SQLConnection.connect();
     }
 
     // Create or insert an OtherDeduction record
-    public boolean insertOtherDeduction(OtherDeduction deduction) {
+    public static boolean insertOtherDeduction(OtherDeduction deduction) {
         String sql = "INSERT INTO OtherDeductions (employeeID, DeductionDate, amount, description, resolved) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect();PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, deduction.getEmployeeID());
             statement.setString(2, deduction.getDate());
             statement.setDouble(3, deduction.getAmount());
@@ -40,9 +38,9 @@ public class OtherDeductionsDAO {
     }
 
     // Read or retrieve an OtherDeduction record by ID
-    public OtherDeduction getOtherDeductionById(int deductionID) {
+    public static OtherDeduction getOtherDeductionById(int deductionID) {
         String sql = "SELECT * FROM OtherDeductions WHERE ID = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect();PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, deductionID);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -60,9 +58,9 @@ public class OtherDeductionsDAO {
     }
 
     // Update an OtherDeduction record
-    public boolean updateOtherDeduction(OtherDeduction deduction) {
+    public static boolean updateOtherDeduction(OtherDeduction deduction) {
         String sql = "UPDATE OtherDeductions SET employeeID = ?, DeductionDate = ?, amount = ?, description = ?, resolved = ? WHERE ID = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect();PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, deduction.getEmployeeID());
             statement.setString(2, deduction.getDate());
             statement.setDouble(3, deduction.getAmount());
@@ -78,9 +76,9 @@ public class OtherDeductionsDAO {
     }
 
     // Delete an OtherDeduction record by ID
-    public boolean deleteOtherDeduction(int deductionID) {
+    public static boolean deleteOtherDeduction(int deductionID) {
         String sql = "DELETE FROM OtherDeductions WHERE ID = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection conn = SQLConnection.connect();PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, deductionID);
             int rowsDeleted = statement.executeUpdate();
             return rowsDeleted > 0;
@@ -91,10 +89,10 @@ public class OtherDeductionsDAO {
     }
 
     // Retrieve all OtherDeduction records
-    public List<OtherDeduction> getAllOtherDeductions() {
+    public static List<OtherDeduction> getAllOtherDeductions() {
         List<OtherDeduction> deductions = new ArrayList<>();
         String sql = "SELECT * FROM OtherDeductions";
-        try (Statement statement = connection.createStatement();
+        try (Connection conn = SQLConnection.connect();Statement statement = conn.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
                 int deductionID = resultSet.getInt("ID");

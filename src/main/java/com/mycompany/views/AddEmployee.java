@@ -6,6 +6,7 @@ package com.mycompany.views;
 
 import com.mycompany.dao.*;
 import com.mycompany.model.*;
+import com.mycompany.utils.CalculateUtils;
 import com.mycompany.utils.DateUtil;
 import com.mycompany.utils.RestrictionUtil;
 import com.toedter.calendar.JDateChooser;
@@ -113,9 +114,9 @@ EmployeeDAO employeeDAO;
             int totalAdvance = 0;
             int totalDeductions = 0;
             int messBill = 0;
-            totalAdvance = CalculateAdvance(employee, totalAdvance);
-            totalDeductions = CalculateDeduction(employee, totalDeductions);
-            messBill = CalculateMessCharges(employee, messBill);
+            totalAdvance = CalculateUtils.CalculateAdvance(advanceList,employee, totalAdvance);
+            totalDeductions = CalculateUtils.CalculateDeduction(deductions,employee, totalDeductions);
+            messBill = CalculateUtils.CalculateMessCharges(messCharges,employee, messBill);
             model.addRow(new Object[] {
                 employee.getName(),
                 employee.getFathersName(),
@@ -134,45 +135,7 @@ EmployeeDAO employeeDAO;
         table.setModel(model);
     }
 
-    private static int CalculateAdvance(Employee employee, int totalAdvance) {
-        if(advanceList!= null && advanceList.size() > 0){
-            
-            for (int index=0; index < advanceList.size(); index++){
-                if(employee.getEmployeeID() == advanceList.get(index).getEmployeeID())
-                {
-                    if(advanceList.get(index).getResolved() == 0)
-                        totalAdvance+=advanceList.get(index).getAmount();
-                }
-            }
-        }
-        return totalAdvance;
-    }
-    private static int CalculateDeduction(Employee employee, int totalDeduction) {
-        if(deductions!= null && deductions.size() > 0){
-            
-            for (int index=0; index < deductions.size(); index++){
-                if(employee.getEmployeeID() == deductions.get(index).getEmployeeID())
-                {
-                    if(deductions.get(index).getResolved() == 0)
-                        totalDeduction+=deductions.get(index).getAmount();
-                }
-            }
-        }
-        return totalDeduction;
-    }
-    private static int CalculateMessCharges(Employee employee, int totalMessCharges) {
-        if(messCharges!= null && messCharges.size() > 0){
-            
-            for (int index=0; index < messCharges.size(); index++){
-                if(employee.getEmployeeID() == messCharges.get(index).getEmployeeID())
-                {
-                    if(messCharges.get(index).getResolved() == 0)
-                        totalMessCharges+=messCharges.get(index).getAmount();
-                }
-            }
-        }
-        return totalMessCharges;
-    }
+
     // Method to save a new employee
     private void saveEmployee() {
         try {

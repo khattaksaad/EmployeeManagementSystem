@@ -9,6 +9,7 @@ import com.mycompany.model.Employee;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JComboBox;
 
 /**
@@ -37,4 +38,13 @@ public class EmployeeHash {
                      employeeId = employeeMap.get(selectedEmployee);}
                     return employeeId;
     }
+
+    public static String GetEmployeeNameFromID(int value) {
+    for (Map.Entry<String, Integer> entry : employeeMap.entrySet()) {
+        if (entry.getValue().equals(value)) {
+            return entry.getKey();
+        }
+    }
+    return null; // Return null if the value is not found
+}
 }

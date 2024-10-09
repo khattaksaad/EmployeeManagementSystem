@@ -22,24 +22,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewMessCharges extends javax.swing.JFrame {
     MessChargeDAO messChargeDAO;
-    private HashMap<String, Integer> employeeMap; 
     /**
      * Creates new form ViewMessCharges
      */
     public ViewMessCharges() throws SQLException {
         initComponents();
         EmployeeHash.PopulateComboBox(jComboBoxEmployeeNames);
+        jComboBoxEmployeeNames.addItem("All");
         this.messChargeDAO = new MessChargeDAO(); // Initialize your DAO
     }
 private void populateTable(List<MessCharge> messCharges) {
 
 
         // Create a DefaultTableModel with appropriate column names
-        DefaultTableModel model = new DefaultTableModel(new Object[]{"Date", "Amount", "Description", "Status"}, 0);
-
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Name","Date", "Amount", "Description", "Status"}, 0);
+        
         // Populate the model with data
         for (MessCharge charge : messCharges) {
+            String name = EmployeeHash.GetEmployeeNameFromID(charge.getEmployeeID());
             model.addRow(new Object[]{
+                name,
                 charge.getDate(),
                 charge.getAmount(),
                 charge.getDescription(),
@@ -146,11 +148,18 @@ private void populateTable(List<MessCharge> messCharges) {
     private void jButtonClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClose1ActionPerformed
         // TODO add your handling code here:
         List<MessCharge> allCharges = messChargeDAO.getAllMessCharges();
-        int employeeId = EmployeeHash.GetEmployeeID(jComboBoxEmployeeNames);
+        String selectedItem = (String) jComboBoxEmployeeNames.getSelectedItem();
+        if(selectedItem == "All"){
+            populateTable(allCharges);
+        }
+        else{
+                    int employeeId = EmployeeHash.GetEmployeeID(jComboBoxEmployeeNames);
        List<MessCharge> filteredCharges = allCharges.stream()
     .filter(charge -> charge.getEmployeeID() == employeeId)
     .collect(Collectors.toList());
        populateTable(filteredCharges);
+        }
+
     }//GEN-LAST:event_jButtonClose1ActionPerformed
 
     /**
