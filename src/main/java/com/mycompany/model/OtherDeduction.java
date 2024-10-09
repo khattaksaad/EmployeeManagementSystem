@@ -11,7 +11,8 @@ package com.mycompany.model;
 public class OtherDeduction {
     private int deductionID;
     private int employeeID;
-
+    private String description;
+    private int resolved;
     public int getDeductionID() {
         return deductionID;
     }
@@ -46,10 +47,40 @@ public class OtherDeduction {
     private String date;
     private double amount;
 
-    public OtherDeduction(int deductionID, int employeeID, String date, double amount) {
+    public OtherDeduction(int deductionID, int employeeID, String date, double amount, String description, int resolved) {
         this.deductionID = deductionID;
         this.employeeID = employeeID;
         this.date = date;
         this.amount = amount;
+        this.description = description;
+        this.resolved = resolved;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the resolved
+     */
+    public int getResolved() {
+        return resolved;
+    }
+
+    /**
+     * @param resolved the resolved to set
+     */
+    public void setResolved(int resolved) {
+        this.resolved = resolved;
     }
 }

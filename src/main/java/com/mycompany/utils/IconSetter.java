@@ -16,11 +16,12 @@ public class IconSetter {
     public static void SetIcon(JFrame frame)
     {
          // Static method to set icon for any JFrame
-        URL url = frame.getClass().getResource("/images/calendar.png");
+        URL url = frame.getClass().getResource("/images/schedule.png");
         // Load the icon from the provided path
         ImageIcon icon = new ImageIcon(url);
 
         // Set the icon for the given JFrame
         frame.setIconImage(icon.getImage());
+        
     }
 }

@@ -27,245 +27,327 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelCNIC" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="96" pref="96" max="-2" attributes="0"/>
-                      <Component id="jTextFieldCNIC" min="-2" pref="110" max="-2" attributes="0"/>
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButtonGetAll" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
-                      <Component id="jTextFieldName" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelFatherName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="52" pref="52" max="-2" attributes="0"/>
-                      <Component id="jTextFieldFatherName" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jTextFieldEmployeeID" min="-2" pref="240" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelRefName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDateOfJoining" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelDateOfJoining" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-                      <Component id="jTextFieldRefName" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelDateOfTermination" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDateOfTermination" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelSalary" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="90" pref="90" max="-2" attributes="0"/>
-                      <Component id="jTextFieldSalary" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelBonus" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="89" pref="89" max="-2" attributes="0"/>
-                      <Component id="jTextFieldBonus" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelCarryForward" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
-                      <Component id="jTextFieldCarryForward" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelQualification" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="54" pref="54" max="-2" attributes="0"/>
-                      <Component id="jTextFieldQualification" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
-                      <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                      <Component id="jButtonUpdate" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane2" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jButtonDelete1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelCNIC" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCNIC" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonGetAll" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldName" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelFatherName" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldFatherName" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-              <Component id="jTextFieldEmployeeID" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelRefName" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDateOfJoining" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelDateOfJoining" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldRefName" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLabelDateOfTermination" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jTextFieldDateOfTermination" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelSalary" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldSalary" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelBonus" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldBonus" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelCarryForward" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCarryForward" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLabelQualification" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jTextFieldQualification" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonUpdate" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jTabbedPane2" min="-2" pref="479" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButtonDelete1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabelCNIC">
+    <Component class="javax.swing.JButton" name="jButtonDelete1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CNIC:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCNIC">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonGetAll">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Search"/>
+        <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGetAllActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDelete1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Name:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldName">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelFatherName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Father Name:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldFatherName">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelRefName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Reference Name:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldRefName">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelDateOfJoining">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Date of Joining"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDateOfJoining">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelDateOfTermination">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Date of Termination"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDateOfTermination">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelSalary">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Salary:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldSalary">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelBonus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Bonus:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldBonus">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelCarryForward">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Carry Forward:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCarryForward">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelQualification">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Qualification:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldQualification">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonAdd">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonDelete">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Delete"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonUpdate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldEmployeeID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextFieldName"/>
-      </Properties>
-    </Component>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="All Employees">
+                <Property name="tabTitle" type="java.lang.String" value="All Employees"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="957" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="438" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="jTable1">
+                      <Properties>
+                        <Property name="autoResizeMode" type="int" value="4"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Manage Employee">
+                <Property name="tabTitle" type="java.lang.String" value="Manage Employee"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCNIC" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFatherName" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelRefName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDateOfJoining" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSalary" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelQualification" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelBonus" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCarryForward" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDateOfTermination" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextFieldSalary" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldQualification" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldBonus" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCarryForward" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDateChooserDateOfTermination" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDateChooserDateOfJoining" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldRefName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldFatherName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldName" alignment="0" pref="709" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCNIC" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonGetAll" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonUpdate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="376" pref="869" max="32767" attributes="0"/>
+                      <Component id="jTextFieldEmployeeID" min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonGetAll" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCNIC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCNIC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jTextFieldEmployeeID" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTextFieldName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTextFieldFatherName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFatherName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTextFieldRefName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelRefName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jDateChooserDateOfJoining" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabelDateOfJoining" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabelDateOfTermination" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDateChooserDateOfTermination" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldSalary" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSalary" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldQualification" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelQualification" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldBonus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelBonus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCarryForward" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCarryForward" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="jTextFieldRefName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDateOfJoining">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Date of Joining"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDateOfTermination">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Date of Termination"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSalary">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salary:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSalary">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelBonus">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bonus:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldBonus">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelCarryForward">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Carry Forward:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldCarryForward">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelQualification">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qualification:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldQualification">
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonAdd">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add new Employee"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelCNIC">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CNIC:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonDelete">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete Employee"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldCNIC">
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonUpdate">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Update Employee"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonGetAll">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Search"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGetAllActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldEmployeeID">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jTextFieldName"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelFatherName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Father Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldFatherName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelRefName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reference Name:"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserDateOfJoining">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserDateOfTermination">
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

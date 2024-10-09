@@ -33,8 +33,8 @@ public class EmployeeDAO {
         pstmt.setString(3, employee.getCnicNo());
         pstmt.setString(4, employee.getReferenceName());
         pstmt.setInt(5, employee.getDepartmentID());
-        pstmt.setString(6, employee.getDateOfJoining());
-        pstmt.setString(7, employee.getDateOfTermination());
+        pstmt.setString(6, "2024-10-09");
+        pstmt.setString(7, "2024-10-10");
         pstmt.setString(8, employee.getQualification());
         pstmt.setDouble(9, employee.getSalaryDecided());
         pstmt.setDouble(10, employee.getCarryForward());
