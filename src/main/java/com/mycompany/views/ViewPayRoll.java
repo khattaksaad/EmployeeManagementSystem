@@ -164,6 +164,7 @@ public class ViewPayRoll extends javax.swing.JFrame {
         // Create an instance of the custom table model
         EmployeeSalaryTableModel model = new EmployeeSalaryTableModel();
         //DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("EmployeeID");
         model.addColumn("Name");
         model.addColumn("Monthly Salary");
         model.addColumn("Bonus");
@@ -197,6 +198,7 @@ public class ViewPayRoll extends javax.swing.JFrame {
         empSalary.setYear((String) jSpinnerYear.getValue());
         employeeSalaries.add(empSalary);
             model.addRow(new Object[] {
+                empSalary.getEmployeeId(),
                 empSalary.getName(),
                 empSalary.getDecidedSalary(),
                 empSalary.getBonus(),
@@ -210,12 +212,14 @@ public class ViewPayRoll extends javax.swing.JFrame {
 
         // Set the model to the JTable
         table.setModel(model);
+        TableUtils.hideColumn(jTable1, 0);
     }
     private List<EmployeeSalary> GetEmployeeSalaryObjectsFromTableAfterEdit()
     {
         // Extracting data and converting to EmpSalary objects
         List<EmployeeSalary> empSalaries = new ArrayList<>();
         for (int row = 0; row < jTable1.getRowCount(); row++) {
+            int id = (int) jTable1.getModel().getValueAt(row, 0);  // Get the hidden column data at row 0
             String name = (String) jTable1.getValueAt(row, 0);
             double decidedSalary = (Double) jTable1.getValueAt(row, 1);
             double bonus = (Double) jTable1.getValueAt(row, 2);
@@ -225,7 +229,7 @@ public class ViewPayRoll extends javax.swing.JFrame {
             double messBill = (Double) jTable1.getValueAt(row, 6);
             double totalSalaryCalculated = (Double) jTable1.getValueAt(row, 7);
 
-            EmployeeSalary empSalary = new EmployeeSalary(name, decidedSalary, bonus, carryForward,
+            EmployeeSalary empSalary = new EmployeeSalary(id,name, decidedSalary, bonus, carryForward,
                                                   advance, otherDeduction, messBill, totalSalaryCalculated);
             empSalaries.add(empSalary);
         }
@@ -247,13 +251,29 @@ public class ViewPayRoll extends javax.swing.JFrame {
             
             try {
                 empD.createEmployeeSalary(emp4DB);
+                PutCarryForwardForAllEmployees(empS);
             } catch (SQLException ex) {
                 Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            AdvanceDAO.ResolveAllAdvance();
+                    OtherDeductionsDAO.ResolveAllOtherDeduction();
+        MessChargeDAO.ResolveAllMessCharges();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         JOptionPane.showMessageDialog(this, success ? "All Salaries added successfully" : "Failed to add Salaries");
     }//GEN-LAST:event_jButtonPaySalaryActionPerformed
-
+    private void PutCarryForwardForAllEmployees(EmployeeSalary empS){
+            
+                    try {
+                EmployeeDAO.updateCarryForwardForEmployee(empS.getCarryForward(), empS.getEmployeeId());
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
     /**
      * @param args the command line arguments
      */

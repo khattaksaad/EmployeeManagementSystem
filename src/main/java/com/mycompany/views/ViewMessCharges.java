@@ -52,7 +52,7 @@ private void populateTable(List<MessCharge> messCharges) {
         // Set the model to the JTable
         jTableMessCharges.setModel(model);
         // Set the custom renderer for the resolved status column (6th column, index 5)
-    jTableMessCharges.getColumnModel().getColumn(3).setCellRenderer(new ResolvedStatusRenderer());
+    jTableMessCharges.getColumnModel().getColumn(4).setCellRenderer(new ResolvedStatusRenderer());
     }
 
     /**

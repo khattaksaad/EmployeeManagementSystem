@@ -17,6 +17,7 @@ com/mycompany/utils/EmployeeSalaryTableModel.class
 com/mycompany/views/MainView$7.class
 com/mycompany/views/AddDepartment$2.class
 com/mycompany/utils/RestrictionUtil$1.class
+com/mycompany/utils/TableUtils.class
 com/mycompany/views/AddDepartment.class
 com/mycompany/dao/EmployeeDAO.class
 com/mycompany/views/AddEmployee.class

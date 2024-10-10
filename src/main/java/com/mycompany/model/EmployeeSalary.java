@@ -21,8 +21,9 @@ public class EmployeeSalary {
     private double totalSalaryCalculated;
     private double advance;
     public EmployeeSalary(){}
-    public EmployeeSalary(String name, double decidedSalary, double bonus, double carryForward,
+    public EmployeeSalary(int employeeId,String name, double decidedSalary, double bonus, double carryForward,
                      double advance, double otherDeduction, double messBill, double totalSalaryCalculated) {
+        this.employeeId = employeeId;
         this.name = name;
         this.decidedSalary = decidedSalary;
         this.bonus = bonus;

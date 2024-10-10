@@ -88,7 +88,13 @@ String description = rs.getString("Description");
             pstmt.executeUpdate();
         }
     }
-
+        public static void ResolveAllAdvance() throws SQLException{
+            String sql = "UPDATE Advance SET Resolved = 1";
+        try (Connection conn = SQLConnection.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+        }
+        }
     // Method to delete an advance record by advanceID
     public static void deleteAdvance(int advanceID) throws SQLException {
         String sql = "DELETE FROM Advance WHERE ID = ?";

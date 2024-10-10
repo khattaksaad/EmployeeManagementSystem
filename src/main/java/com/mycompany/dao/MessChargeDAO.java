@@ -106,7 +106,13 @@ public class MessChargeDAO {
             e.printStackTrace();
         }
     }
-
+        public static void ResolveAllMessCharges() throws SQLException{
+            String sql = "UPDATE MessBill SET Resolved = 1";
+        try (Connection conn = SQLConnection.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+        }
+        }
     // Delete a mess charge by ID
     public void deleteMessCharge(int id) {
         String sql = "DELETE FROM MessBill WHERE ID = ?";

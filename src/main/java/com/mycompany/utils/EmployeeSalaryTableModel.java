@@ -15,6 +15,7 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
     
     // Define column names
     private final String[] columnNames = {
+            "EmployeeID",
             "Name",
             "Monthly Salary",
             "Bonus",
@@ -26,7 +27,7 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
     };
 
     public EmployeeSalaryTableModel() {
-        super(new Object[][]{}, new String[] {"Name", "Monthly Salary", "Bonus", "Carry Forward", "Advance", "Deduction", "Mess Bill", "Calculated Salary"});
+        super(new Object[][]{}, new String[] {"EmployeeID","Name", "Monthly Salary", "Bonus", "Carry Forward", "Advance", "Deduction", "Mess Bill", "Calculated Salary"});
     }
 
     @Override
@@ -39,12 +40,12 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
     public void setValueAt(Object aValue, int row, int column) {
         // Enforce type safety
         switch (column) {
-            case 1: // Monthly Salary
-            case 2: // Bonus
-            case 3: // Carry Forward
-            case 4: // Advance
-            case 5: // Deduction
-            case 6: // Mess Bill
+            case 2: // Monthly Salary
+            case 3: // Bonus
+            case 4: // Carry Forward
+            case 5: // Advance
+            case 6: // Deduction
+            case 7: // Mess Bill
                 if (aValue instanceof Number) {
                     super.setValueAt(aValue, row, column);
                 } else if (aValue instanceof String) {
@@ -70,18 +71,18 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
     }
 private void recalculateCalculatedSalary(int row) {
         try {
-            double salary = (Double) getValueAt(row, 1);  // Monthly Salary
-            double bonus = (Double) getValueAt(row, 2);   // Bonus
-            double carryForward = (Double) getValueAt(row, 3); // Carry Forward
-            double advance = (Double) getValueAt(row, 4);  // Advance
-            double deduction = (Double) getValueAt(row, 5); // Deduction
-            double messBill = (Double) getValueAt(row, 6);  // Mess Bill
+            double salary = (Double) getValueAt(row, 2);  // Monthly Salary
+            double bonus = (Double) getValueAt(row, 3);   // Bonus
+            double carryForward = (Double) getValueAt(row, 4); // Carry Forward
+            double advance = (Double) getValueAt(row, 5);  // Advance
+            double deduction = (Double) getValueAt(row, 6); // Deduction
+            double messBill = (Double) getValueAt(row, 7);  // Mess Bill
 
             // Calculate the total calculated salary
-            double totalCalculatedSalary = salary + bonus - (advance + deduction + messBill + carryForward);
+            double totalCalculatedSalary = salary + bonus - (advance + deduction + messBill);
 
             // Update the Calculated Salary column (index 7)
-            setValueAt(totalCalculatedSalary, row, 7); // Calculated Salary
+            setValueAt(totalCalculatedSalary, row, 8); // Calculated Salary
         } catch (ClassCastException e) {
             // Handle any casting issues or log the error
             e.printStackTrace();

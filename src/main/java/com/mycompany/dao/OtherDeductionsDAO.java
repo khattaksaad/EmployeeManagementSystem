@@ -56,7 +56,13 @@ public class OtherDeductionsDAO {
         }
         return null;
     }
-
+        public static void ResolveAllOtherDeduction() throws SQLException{
+            String sql = "UPDATE OtherDeductions SET Resolved = 1";
+        try (Connection conn = SQLConnection.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+        }
+        }
     // Update an OtherDeduction record
     public static boolean updateOtherDeduction(OtherDeduction deduction) {
         String sql = "UPDATE OtherDeductions SET employeeID = ?, DeductionDate = ?, amount = ?, description = ?, resolved = ? WHERE ID = ?";

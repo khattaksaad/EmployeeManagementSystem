@@ -38,7 +38,9 @@ public class EmployeeHash {
                      employeeId = employeeMap.get(selectedEmployee);}
                     return employeeId;
     }
-
+    public static int GetEmployeeIDFromName(String name){
+        return employeeMap.get(name);
+    }
     public static String GetEmployeeNameFromID(int value) {
     for (Map.Entry<String, Integer> entry : employeeMap.entrySet()) {
         if (entry.getValue().equals(value)) {

@@ -40,7 +40,15 @@ public class EmployeeDAO {
         return pstmt.executeUpdate() > 0;
         }
     }
-
+    public static boolean updateCarryForwardForEmployee(double carryForward, int employeeId) throws SQLException{
+        String query = "UPDATE Employee SET CarryForward=? WHERE EmployeeID=?";
+         try (Connection conn = SQLConnection.connect(); 
+                 PreparedStatement pstmt = conn.prepareStatement(query)){
+        pstmt.setDouble(1, carryForward);
+        pstmt.setInt(2, employeeId);
+        pstmt.executeUpdate();
+        return true;}
+    }
     // Update an existing Employee
     public boolean updateEmployee(Employee employee) throws SQLException {
         String query = "UPDATE Employee SET Name=?, FatherName=?, CNICNo=?, ReferenceName=?, DepartmentID=?, DateOfJoining=?, DateOfTermination=?, Qualification=?, SalaryDecided=?, CarryForward=? WHERE EmployeeID=?";
