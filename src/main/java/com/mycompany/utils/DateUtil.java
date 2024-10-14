@@ -27,6 +27,7 @@ public class DateUtil {
     } 
     public static Date GetDateFromString(String dateString){
         Date date = null;
+        if(dateString.isEmpty()) return date;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             date = dateFormat.parse(dateString);  // Convert string to Date

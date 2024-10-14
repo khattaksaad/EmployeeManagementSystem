@@ -19,13 +19,14 @@ public class EmployeeSalaryDAO {
     // Method to create a new EmployeeSalary record
     public boolean createEmployeeSalary(EmployeeSalary4DB employeeSalary) throws SQLException {
         boolean result = true;
-        String sql = "INSERT INTO EmployeeSalary (Bonus, TotalSalary, EmployeeID, SalaryDate) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO EmployeeSalary (Bonus, TotalCalculatedSalary, ActualPaidSalary, EmployeeID, SalaryDate) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = SQLConnection.connect(); // Establish connection here
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setDouble(1, employeeSalary.getBonus());
             pstmt.setDouble(2, employeeSalary.getTotalSalary());
-            pstmt.setInt(3, employeeSalary.getEmployeeID());
-            pstmt.setString(4, (employeeSalary.getSalaryDate()));
+            pstmt.setDouble(3, employeeSalary.getActualPaidSalary());
+            pstmt.setInt(4, employeeSalary.getEmployeeID());
+            pstmt.setString(5, (employeeSalary.getSalaryDate()));
             pstmt.executeUpdate();
         }
         
@@ -44,11 +45,12 @@ public class EmployeeSalaryDAO {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 double bonus = rs.getDouble("Bonus");
-                double totalSalary = rs.getDouble("TotalSalary");
+                double totalSalary = rs.getDouble("TotalCalculatedSalary");
+                double actualPaidSalary = rs.getDouble("actualPaidSalary");
                 int employeeID = rs.getInt("EmployeeID");
                 String salaryDate = rs.getString("SalaryDate");
 
-                EmployeeSalary4DB employeeSalary = new EmployeeSalary4DB(id, bonus, totalSalary, employeeID, salaryDate);
+                EmployeeSalary4DB employeeSalary = new EmployeeSalary4DB(id, bonus, totalSalary,actualPaidSalary, employeeID, salaryDate);
                 employeeSalaries.add(employeeSalary);
             }
         }

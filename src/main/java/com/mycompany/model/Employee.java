@@ -92,12 +92,12 @@ public class Employee {
         this.salaryDecided = salaryDecided;
     }
 
-    public double getCarryForward() {
-        return carryForward;
+    public double getPreviousLoan() {
+        return previousLoan;
     }
 
-    public void setCarryForward(double carryForward) {
-        this.carryForward = carryForward;
+    public void setPreviousLoan(double previousLoan) {
+        this.previousLoan = previousLoan;
     }
     private String name;
     private String fatherName;
@@ -108,11 +108,11 @@ public class Employee {
     private String dateOfTermination;
     private String qualification;
     private double salaryDecided;
-    private double carryForward;
+    private double previousLoan;
 
     public Employee(int employeeID, String name, String fatherName, String cnicNo, 
                     String referenceName, int departmentID, String dateOfJoining, 
-                    String dateOfTermination, String qualification, double salaryDecided, int carryForward) {
+                    String dateOfTermination, String qualification, double salaryDecided, double previousLoan) {
         this.employeeID = employeeID;
         this.name = name;
         this.fatherName = fatherName;
@@ -123,7 +123,7 @@ public class Employee {
         this.dateOfTermination = dateOfTermination;
         this.qualification = qualification;
         this.salaryDecided = salaryDecided;
-        this.carryForward = carryForward;
+        this.previousLoan = previousLoan;
     }
 
     // Getters and setters...

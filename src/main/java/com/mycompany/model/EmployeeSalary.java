@@ -19,10 +19,12 @@ public class EmployeeSalary {
     private double decidedSalary;
     private double messBill;
     private double totalSalaryCalculated;
+    private double actualPaidSalary;
     private double advance;
+    private double previousLoan;
     public EmployeeSalary(){}
     public EmployeeSalary(int employeeId,String name, double decidedSalary, double bonus, double carryForward,
-                     double advance, double otherDeduction, double messBill, double totalSalaryCalculated) {
+                     double advance, double otherDeduction, double messBill, double totalSalaryCalculated, double actualPaidSalary,double previousLoan) {
         this.employeeId = employeeId;
         this.name = name;
         this.decidedSalary = decidedSalary;
@@ -32,6 +34,8 @@ public class EmployeeSalary {
         this.otherDeduction = otherDeduction;
         this.messBill = messBill;
         this.totalSalaryCalculated = totalSalaryCalculated;
+        this.actualPaidSalary = actualPaidSalary;
+        this.previousLoan = previousLoan;
     }
 
     /**
@@ -186,5 +190,33 @@ public class EmployeeSalary {
      */
     public void setAdvance(double advance) {
         this.advance = advance;
+    }
+
+    /**
+     * @return the actualPaidSalary
+     */
+    public double getActualPaidSalary() {
+        return actualPaidSalary;
+    }
+
+    /**
+     * @param actualPaidSalary the actualPaidSalary to set
+     */
+    public void setActualPaidSalary(double actualPaidSalary) {
+        this.actualPaidSalary = actualPaidSalary;
+    }
+
+    /**
+     * @return the previousLoan
+     */
+    public double getPreviousLoan() {
+        return previousLoan;
+    }
+
+    /**
+     * @param previousLoan the previousLoan to set
+     */
+    public void setPreviousLoan(double previousLoan) {
+        this.previousLoan = previousLoan;
     }
 }

@@ -105,7 +105,7 @@ EmployeeDAO employeeDAO;
         model.addColumn("Qualification");
         model.addColumn("CNIC");
         model.addColumn("Joining Date");
-        model.addColumn("Carry Forward");
+        model.addColumn("Previous Loan");
         model.addColumn("Advance");
         model.addColumn("Deduction");
         model.addColumn("Mess Bill");
@@ -124,7 +124,7 @@ EmployeeDAO employeeDAO;
                 employee.getQualification(),
                 employee.getCnicNo(),
                 employee.getDateOfJoining(),
-                employee.getCarryForward(),
+                employee.getPreviousLoan(),
                 totalAdvance,
                 totalDeductions,
                 messBill
@@ -172,7 +172,7 @@ EmployeeDAO employeeDAO;
                     DateUtil.GetDateforDateChooser(jDateChooserDateOfTermination),
                     jTextFieldQualification.getText(),
                     Double.parseDouble(jTextFieldSalary.getText()),
-                    Integer.parseInt(jTextFieldCarryForward.getText())
+                    Double.parseDouble(jTextFieldCarryForward.getText())
             );
             employee.setEmployeeID(Integer.parseInt(jTextFieldEmployeeID.getText()));
             boolean success = employeeDAO.updateEmployee(employee);
@@ -294,7 +294,7 @@ EmployeeDAO employeeDAO;
 
         jLabelBonus.setText("Bonus:");
 
-        jLabelCarryForward.setText("Carry Forward:");
+        jLabelCarryForward.setText("Previous Loan:");
 
         jLabelQualification.setText("Qualification:");
 
@@ -316,6 +316,11 @@ EmployeeDAO employeeDAO;
         });
 
         jButtonUpdate.setText("Update Employee");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
         jButtonGetAll.setText("Search");
         jButtonGetAll.addActionListener(new java.awt.event.ActionListener() {
@@ -336,45 +341,46 @@ EmployeeDAO employeeDAO;
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelName)
-                    .addComponent(jLabelCNIC)
-                    .addComponent(jLabelFatherName)
-                    .addComponent(jLabelRefName)
-                    .addComponent(jLabelDateOfJoining)
-                    .addComponent(jLabelSalary)
-                    .addComponent(jLabelQualification)
-                    .addComponent(jLabelBonus)
-                    .addComponent(jLabelCarryForward)
-                    .addComponent(jLabelDateOfTermination))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldSalary)
-                    .addComponent(jTextFieldQualification)
-                    .addComponent(jTextFieldBonus)
-                    .addComponent(jTextFieldCarryForward)
-                    .addComponent(jDateChooserDateOfTermination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooserDateOfJoining, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldRefName)
-                    .addComponent(jTextFieldFatherName)
-                    .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
-                    .addComponent(jTextFieldCNIC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonGetAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jButtonAdd)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonDelete)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(376, 869, Short.MAX_VALUE)
                 .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelName)
+                            .addComponent(jLabelCNIC)
+                            .addComponent(jLabelFatherName)
+                            .addComponent(jLabelRefName)
+                            .addComponent(jLabelDateOfJoining)
+                            .addComponent(jLabelSalary)
+                            .addComponent(jLabelQualification)
+                            .addComponent(jLabelBonus)
+                            .addComponent(jLabelCarryForward)
+                            .addComponent(jLabelDateOfTermination))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldSalary)
+                            .addComponent(jTextFieldQualification)
+                            .addComponent(jTextFieldBonus)
+                            .addComponent(jTextFieldCarryForward)
+                            .addComponent(jDateChooserDateOfTermination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooserDateOfJoining, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldRefName)
+                            .addComponent(jTextFieldFatherName)
+                            .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCNIC))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGetAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonUpdate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonDelete)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,6 +488,11 @@ EmployeeDAO employeeDAO;
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAddActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
     private void SetFields(Employee employee){
         jTextFieldName.setText(employee.getName());
         jTextFieldRefName.setText(employee.getReferenceName());
@@ -490,7 +501,7 @@ EmployeeDAO employeeDAO;
         jDateChooserDateOfTermination.setDate(DateUtil.GetDateFromString(employee.getDateOfTermination()));
         jTextFieldSalary.setText(Double.toString(employee.getSalaryDecided()));
         jTextFieldQualification.setText(employee.getQualification());
-        jTextFieldCarryForward.setText(Double.toString(employee.getCarryForward()));
+        jTextFieldCarryForward.setText(Double.toString(employee.getPreviousLoan()));
         jTextFieldEmployeeID.setText(Integer.toString(employee.getEmployeeID()));
     }
     /**

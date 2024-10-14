@@ -124,49 +124,52 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelCNIC" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelFatherName" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelRefName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDateOfJoining" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelSalary" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelQualification" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelBonus" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelCarryForward" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDateOfTermination" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldSalary" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldQualification" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBonus" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCarryForward" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jDateChooserDateOfTermination" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jDateChooserDateOfJoining" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldRefName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldFatherName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldName" alignment="0" pref="709" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCNIC" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonGetAll" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonUpdate" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="376" pref="869" max="32767" attributes="0"/>
                       <Component id="jTextFieldEmployeeID" min="-2" pref="78" max="-2" attributes="0"/>
                       <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelCNIC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFatherName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelRefName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDateOfJoining" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSalary" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelQualification" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelBonus" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelCarryForward" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDateOfTermination" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextFieldSalary" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldQualification" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldBonus" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCarryForward" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDateChooserDateOfTermination" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDateChooserDateOfJoining" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldRefName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldFatherName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldName" alignment="0" pref="709" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCNIC" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonGetAll" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonUpdate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -268,7 +271,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelCarryForward">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Carry Forward:"/>
+                <Property name="text" type="java.lang.String" value="Previous Loan:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldCarryForward">
@@ -308,6 +311,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Update Employee"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUpdateActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonGetAll">
               <Properties>

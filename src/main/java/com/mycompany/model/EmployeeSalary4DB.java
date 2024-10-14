@@ -14,15 +14,17 @@ public class EmployeeSalary4DB {
     private int id;
     private double bonus;
     private double totalSalary;
+    private double actualPaidSalary;
     private int employeeID;
     private String salaryDate;
 
     // Constructor
-    public EmployeeSalary4DB(int id, double bonus, double totalSalary, int employeeID, String salaryDate) {
+    public EmployeeSalary4DB(int id, double bonus, double totalSalary, double actualPaidSalary, int employeeID, String salaryDate) {
         this.id = id;
         this.bonus = bonus;
         this.totalSalary = totalSalary;
         this.employeeID = employeeID;
+        this.actualPaidSalary = actualPaidSalary;
         this.salaryDate = salaryDate;
     }
 
@@ -65,5 +67,19 @@ public class EmployeeSalary4DB {
 
     public void setSalaryDate(String salaryDate) {
         this.salaryDate = salaryDate;
+    }
+
+    /**
+     * @return the actualPaidSalary
+     */
+    public double getActualPaidSalary() {
+        return actualPaidSalary;
+    }
+
+    /**
+     * @param actualPaidSalary the actualPaidSalary to set
+     */
+    public void setActualPaidSalary(double actualPaidSalary) {
+        this.actualPaidSalary = actualPaidSalary;
     }
 }

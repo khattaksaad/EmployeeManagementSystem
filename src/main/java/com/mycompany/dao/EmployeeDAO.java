@@ -23,7 +23,7 @@ public class EmployeeDAO {
 
     // Add a new Employee
     public boolean addEmployee(Employee employee) throws SQLException {
-        String query = "INSERT INTO Employee (Name, FatherName, CNICNo, ReferenceName, DepartmentID, DateOfJoining, DateOfTermination, Qualification, SalaryDecided, CarryForward) " +
+        String query = "INSERT INTO Employee (Name, FatherName, CNICNo, ReferenceName, DepartmentID, DateOfJoining, DateOfTermination, Qualification, SalaryDecided, PreviousLoan) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = SQLConnection.connect(); PreparedStatement pstmt = conn.prepareStatement(query)){
         pstmt.setString(1, employee.getName());
@@ -35,13 +35,13 @@ public class EmployeeDAO {
         pstmt.setString(7, employee.getDateOfTermination());
         pstmt.setString(8, employee.getQualification());
         pstmt.setDouble(9, employee.getSalaryDecided());
-        pstmt.setDouble(10, employee.getCarryForward());
+        pstmt.setDouble(10, employee.getPreviousLoan());
 
         return pstmt.executeUpdate() > 0;
         }
     }
     public static boolean updateCarryForwardForEmployee(double carryForward, int employeeId) throws SQLException{
-        String query = "UPDATE Employee SET CarryForward=? WHERE EmployeeID=?";
+        String query = "UPDATE Employee SET PreviousLoan=? WHERE EmployeeID=?";
          try (Connection conn = SQLConnection.connect(); 
                  PreparedStatement pstmt = conn.prepareStatement(query)){
         pstmt.setDouble(1, carryForward);
@@ -51,7 +51,7 @@ public class EmployeeDAO {
     }
     // Update an existing Employee
     public boolean updateEmployee(Employee employee) throws SQLException {
-        String query = "UPDATE Employee SET Name=?, FatherName=?, CNICNo=?, ReferenceName=?, DepartmentID=?, DateOfJoining=?, DateOfTermination=?, Qualification=?, SalaryDecided=?, CarryForward=? WHERE EmployeeID=?";
+        String query = "UPDATE Employee SET Name=?, FatherName=?, CNICNo=?, ReferenceName=?, DepartmentID=?, DateOfJoining=?, DateOfTermination=?, Qualification=?, SalaryDecided=?, PreviousLoan=? WHERE EmployeeID=?";
          try (Connection conn = SQLConnection.connect(); PreparedStatement pstmt = conn.prepareStatement(query))
          {pstmt.setString(1, employee.getName());
         pstmt.setString(2, employee.getFathersName());
@@ -62,7 +62,7 @@ public class EmployeeDAO {
         pstmt.setString(7, employee.getDateOfTermination());
         pstmt.setString(8, employee.getQualification());
         pstmt.setDouble(9, employee.getSalaryDecided());
-        pstmt.setDouble(10, employee.getCarryForward());
+        pstmt.setDouble(10, employee.getPreviousLoan());
         pstmt.setInt(11, employee.getEmployeeID());
 
         return pstmt.executeUpdate() > 0;}
@@ -94,8 +94,8 @@ public class EmployeeDAO {
                 rs.getString("DateOfJoining"),
                 rs.getString("DateOfTermination"),
                 rs.getString("Qualification"),
-                rs.getDouble("SalaryDecided"),
-                rs.getInt("CarryForward")
+                rs.getDouble("TotalCalculatedSalary"),
+                rs.getDouble("PreviousLoan")
             );
             employee.setEmployeeID(rs.getInt("EmployeeID"));
             employees.add(employee);

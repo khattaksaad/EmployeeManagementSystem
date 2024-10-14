@@ -59,34 +59,36 @@ public class ViewPayRoll extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jSpinnerYear = new javax.swing.JSpinner();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
         jComboBoxMonth = new javax.swing.JComboBox<>();
-        jButtonGenerateSalary = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jSpinnerYear = new javax.swing.JSpinner();
+        jButtonGenerateSalary = new javax.swing.JButton();
         jButtonPaySalary = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonViewArchive = new javax.swing.JButton();
+        jSpinnerYear1 = new javax.swing.JSpinner();
+        jComboBoxMonth1 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSpinnerYear.setModel(new javax.swing.SpinnerListModel(new String[] {"2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033"}));
-
         jComboBoxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jScrollPane1.setViewportView(jTable1);
+
+        jSpinnerYear.setModel(new javax.swing.SpinnerListModel(new String[] {"2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033"}));
 
         jButtonGenerateSalary.setText("Generate");
         jButtonGenerateSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGenerateSalaryActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setText("Close");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -97,42 +99,111 @@ public class ViewPayRoll extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Close");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinnerYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonGenerateSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
+                        .addComponent(jButtonPaySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPaySalary)
+                    .addComponent(jButtonGenerateSalary)
+                    .addComponent(jSpinnerYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Pay Salaries", jPanel2);
+
+        jButtonViewArchive.setText("Load");
+        jButtonViewArchive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonViewArchiveActionPerformed(evt);
+            }
+        });
+
+        jSpinnerYear1.setModel(new javax.swing.SpinnerListModel(new String[] {"2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033"}));
+
+        jComboBoxMonth1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBoxMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSpinnerYear1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonViewArchive, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 646, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonViewArchive)
+                    .addComponent(jSpinnerYear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(553, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(35, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane2.addTab("Archive", jPanel3);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinnerYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonGenerateSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonPaySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+            .addComponent(jTabbedPane2)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinnerYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonGenerateSalary)
-                    .addComponent(jButtonPaySalary))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,18 +218,53 @@ public class ViewPayRoll extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButtonPaySalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPaySalaryActionPerformed
+        // TODO add your handling code here:
+        List<EmployeeSalary> empSalaries = GetEmployeeSalaryObjectsFromTableAfterEdit();
+        EmployeeSalaryDAO empD = new EmployeeSalaryDAO();
+        boolean success = true;
+        for(EmployeeSalary empS : empSalaries){
+            //double bonus, double totalSalary, int employeeID, Date salaryDate
+            EmployeeSalary4DB emp4DB = new EmployeeSalary4DB(0, empS.getBonus(), empS.getTotalSalaryCalculated(), empS.getActualPaidSalary(), empS.getEmployeeId(),DateUtil.GetTodayAsString());
+
+            try {
+                empD.createEmployeeSalary(emp4DB);
+                PutCarryForwardForAllEmployees(empS);
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            AdvanceDAO.ResolveAllAdvance();
+            OtherDeductionsDAO.ResolveAllOtherDeduction();
+            MessChargeDAO.ResolveAllMessCharges();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(this, success ? "All Salaries added successfully" : "Failed to add Salaries");
+    }//GEN-LAST:event_jButtonPaySalaryActionPerformed
+
+    private void jButtonGenerateSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateSalaryActionPerformed
+        // TODO add your handling code here:
+        setEmployeeSalaryTableModel(jTable1);
+    }//GEN-LAST:event_jButtonGenerateSalaryActionPerformed
+
+    private void jButtonViewArchiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewArchiveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonViewArchiveActionPerformed
     public void setEmployeeSalaryTableModel(JTable table) {
         // Create a DefaultTableModel with column names
         // Create an instance of the custom table model
@@ -168,11 +274,13 @@ public class ViewPayRoll extends javax.swing.JFrame {
         model.addColumn("Name");
         model.addColumn("Monthly Salary");
         model.addColumn("Bonus");
-        model.addColumn("Carry Forward");
-        model.addColumn("Advance");
+       model.addColumn("Previous Loan");
+        model.addColumn("Advance during month");
         model.addColumn("Deduction");
         model.addColumn("Mess Bill");
         model.addColumn("Calculated Salary");
+        model.addColumn("Actual paid");
+        model.addColumn("Carry Forward");
         // Add rows from the List<Employee>
         for (Employee employee : employees) {
 
@@ -183,12 +291,12 @@ public class ViewPayRoll extends javax.swing.JFrame {
             totalAdvance = CalculateUtils.CalculateAdvance(allAdvances, employee, totalAdvance);
             totalDeductions = CalculateUtils.CalculateDeduction(allDeductions, employee, totalDeductions);
             messBill = CalculateUtils.CalculateMessCharges(allMessCharges, employee, messBill);
-            double totalCalculatedSalary = employee.getSalaryDecided() + bonus - (totalAdvance + totalDeductions + messBill +employee.getCarryForward());
+            double totalCalculatedSalary = employee.getSalaryDecided() + bonus - (totalAdvance + totalDeductions + messBill +employee.getPreviousLoan());
                                 EmployeeSalary empSalary = new EmployeeSalary();
         empSalary.setName(employee.getName());
         empSalary.setEmployeeId(employee.getEmployeeID());
         empSalary.setBonus(bonus);
-        empSalary.setCarryForward(employee.getCarryForward());
+        //empSalary.setCarryForward(employee.getPreviousLoan());
         empSalary.setDecidedSalary(employee.getSalaryDecided());
         empSalary.setMessBill(messBill);
         empSalary.setOtherDeduction(totalDeductions);
@@ -196,17 +304,19 @@ public class ViewPayRoll extends javax.swing.JFrame {
         empSalary.setTotalSalaryCalculated(totalCalculatedSalary);
         empSalary.setMonth((String) jComboBoxMonth.getSelectedItem());
         empSalary.setYear((String) jSpinnerYear.getValue());
+        empSalary.setPreviousLoan(employee.getPreviousLoan());
         employeeSalaries.add(empSalary);
             model.addRow(new Object[] {
                 empSalary.getEmployeeId(),
                 empSalary.getName(),
                 empSalary.getDecidedSalary(),
                 empSalary.getBonus(),
-                empSalary.getCarryForward(),
+                empSalary.getPreviousLoan(),
                 empSalary.getAdvance(),
                 empSalary.getOtherDeduction(),
                 empSalary.getMessBill(), 
-                empSalary.getTotalSalaryCalculated()
+                empSalary.getTotalSalaryCalculated(),
+                0,0
             });
         }
 
@@ -223,50 +333,35 @@ public class ViewPayRoll extends javax.swing.JFrame {
             String name = (String) jTable1.getValueAt(row, 0);
             double decidedSalary = (Double) jTable1.getValueAt(row, 1);
             double bonus = (Double) jTable1.getValueAt(row, 2);
-            double carryForward = (Double) jTable1.getValueAt(row, 3);
+            double previousLoan = (Double) jTable1.getValueAt(row, 3);
             double advance = (Double) jTable1.getValueAt(row, 4);
             double otherDeduction = (Double) jTable1.getValueAt(row, 5);
             double messBill = (Double) jTable1.getValueAt(row, 6);
             double totalSalaryCalculated = (Double) jTable1.getValueAt(row, 7);
+            Object ob1 = jTable1.getValueAt(row, 8);  // Object containing Integer
+            Double actualPaidSalary = 0.0;
+if (ob1 instanceof Integer) {
+    actualPaidSalary = ((Integer) ob1).doubleValue();  // Proper conversion
+}
+else{
+    actualPaidSalary = (Double) jTable1.getValueAt(row, 8);
+}
+            Object ob2 = jTable1.getValueAt(row, 9);  // Object containing Integer
+            Double carryForward = 0.0;
+if (ob2 instanceof Integer) {
+    actualPaidSalary = ((Integer) ob2).doubleValue();  // Proper conversion
+}
+else{
+    carryForward = (Double) jTable1.getValueAt(row, 9);
+}
 
-            EmployeeSalary empSalary = new EmployeeSalary(id,name, decidedSalary, bonus, carryForward,
-                                                  advance, otherDeduction, messBill, totalSalaryCalculated);
+            
+            EmployeeSalary empSalary = new EmployeeSalary(id,name, decidedSalary, bonus, previousLoan,
+                                                  advance, otherDeduction, messBill, totalSalaryCalculated,actualPaidSalary,carryForward);
             empSalaries.add(empSalary);
         }
         return empSalaries;
-    }
-    private void jButtonGenerateSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateSalaryActionPerformed
-        // TODO add your handling code here:
-        setEmployeeSalaryTableModel(jTable1);
-    }//GEN-LAST:event_jButtonGenerateSalaryActionPerformed
-
-    private void jButtonPaySalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPaySalaryActionPerformed
-        // TODO add your handling code here:
-        List<EmployeeSalary> empSalaries = GetEmployeeSalaryObjectsFromTableAfterEdit();
-        EmployeeSalaryDAO empD = new EmployeeSalaryDAO();
-        boolean success = true;
-        for(EmployeeSalary empS : empSalaries){
-            //double bonus, double totalSalary, int employeeID, Date salaryDate
-            EmployeeSalary4DB emp4DB = new EmployeeSalary4DB(0, empS.getBonus(), empS.getTotalSalaryCalculated(), empS.getEmployeeId(),DateUtil.GetTodayAsString());
-            
-            try {
-                empD.createEmployeeSalary(emp4DB);
-                PutCarryForwardForAllEmployees(empS);
-            } catch (SQLException ex) {
-                Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        try {
-            AdvanceDAO.ResolveAllAdvance();
-                    OtherDeductionsDAO.ResolveAllOtherDeduction();
-        MessChargeDAO.ResolveAllMessCharges();
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        JOptionPane.showMessageDialog(this, success ? "All Salaries added successfully" : "Failed to add Salaries");
-    }//GEN-LAST:event_jButtonPaySalaryActionPerformed
-    private void PutCarryForwardForAllEmployees(EmployeeSalary empS){
+    }    private void PutCarryForwardForAllEmployees(EmployeeSalary empS){
             
                     try {
                 EmployeeDAO.updateCarryForwardForEmployee(empS.getCarryForward(), empS.getEmployeeId());
@@ -314,13 +409,22 @@ public class ViewPayRoll extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonGenerateSalary;
     private javax.swing.JButton jButtonPaySalary;
+    private javax.swing.JButton jButtonViewArchive;
     private javax.swing.JComboBox<String> jComboBoxMonth;
+    private javax.swing.JComboBox<String> jComboBoxMonth1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinnerYear;
+    private javax.swing.JSpinner jSpinnerYear1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

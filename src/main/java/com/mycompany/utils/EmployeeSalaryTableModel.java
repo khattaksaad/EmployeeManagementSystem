@@ -19,15 +19,17 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
             "Name",
             "Monthly Salary",
             "Bonus",
-            "Carry Forward",
+            "Previous Loan",
             "Advance",
             "Deduction",
             "Mess Bill",
-            "Calculated Salary"
+            "Calculated Salary",
+            "Actual Paid Salary",
+            "Carry Forward"
     };
 
     public EmployeeSalaryTableModel() {
-        super(new Object[][]{}, new String[] {"EmployeeID","Name", "Monthly Salary", "Bonus", "Carry Forward", "Advance", "Deduction", "Mess Bill", "Calculated Salary"});
+        super(new Object[][]{}, new String[] {"EmployeeID","Name", "Monthly Salary", "Bonus", "Previous Loan", "Advance", "Deduction", "Mess Bill", "Calculated Salary", "Actual Paid Salary", "Carry Forward"});
     }
 
     @Override
@@ -46,6 +48,8 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
             case 5: // Advance
             case 6: // Deduction
             case 7: // Mess Bill
+            case 9:
+            case 10:
                 if (aValue instanceof Number) {
                     super.setValueAt(aValue, row, column);
                 } else if (aValue instanceof String) {
@@ -73,13 +77,13 @@ private void recalculateCalculatedSalary(int row) {
         try {
             double salary = (Double) getValueAt(row, 2);  // Monthly Salary
             double bonus = (Double) getValueAt(row, 3);   // Bonus
-            double carryForward = (Double) getValueAt(row, 4); // Carry Forward
+            double previousLoan = (Double) getValueAt(row, 4); // Carry Forward
             double advance = (Double) getValueAt(row, 5);  // Advance
             double deduction = (Double) getValueAt(row, 6); // Deduction
             double messBill = (Double) getValueAt(row, 7);  // Mess Bill
 
             // Calculate the total calculated salary
-            double totalCalculatedSalary = salary + bonus - (advance + deduction + messBill);
+            double totalCalculatedSalary = salary + bonus - (advance + deduction + messBill + previousLoan);
 
             // Update the Calculated Salary column (index 7)
             setValueAt(totalCalculatedSalary, row, 8); // Calculated Salary
