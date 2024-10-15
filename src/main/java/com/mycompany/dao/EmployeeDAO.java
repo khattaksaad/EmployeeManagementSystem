@@ -94,7 +94,7 @@ public class EmployeeDAO {
                 rs.getString("DateOfJoining"),
                 rs.getString("DateOfTermination"),
                 rs.getString("Qualification"),
-                rs.getDouble("TotalCalculatedSalary"),
+                rs.getDouble("SalaryDecided"),
                 rs.getDouble("PreviousLoan")
             );
             employee.setEmployeeID(rs.getInt("EmployeeID"));

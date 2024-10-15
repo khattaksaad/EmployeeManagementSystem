@@ -48,8 +48,6 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
             case 5: // Advance
             case 6: // Deduction
             case 7: // Mess Bill
-            case 9:
-            case 10:
                 if (aValue instanceof Number) {
                     super.setValueAt(aValue, row, column);
                 } else if (aValue instanceof String) {
@@ -68,7 +66,37 @@ public class EmployeeSalaryTableModel extends DefaultTableModel {
                                 // Recalculate the Calculated Salary after updating relevant fields
                 recalculateCalculatedSalary(row);
                 break;
+            case 9:
+                if (aValue instanceof Number) {
+                    super.setValueAt(aValue, row, column);
+                } else if (aValue instanceof String) {
+                    try {
+                        // Try parsing the String to Double
+                        double value = Double.parseDouble((String) aValue);
+                        super.setValueAt(value, row, column);
+                    } catch (NumberFormatException e) {
+                        // If parsing fails, show an error message or handle accordingly
+                        throw new IllegalArgumentException("Invalid input for column " + columnNames[column] + ": must be a number.");
+                    }
+                } else {
+                    // If the input is not a number or string, show an error message
+                    throw new IllegalArgumentException("Invalid input for column " + columnNames[column] + ": must be a number.");
+                }
+                                // Recalculate the Calculated Salary after updating relevant fields
+                // Get values from ActualSalaryPaid and CalculatedSalary columns
+            double actualSalaryPaid = (double) getValueAt(row, 9);
+            double calculatedSalary = (double) getValueAt(row, 8);
+            
+            // Calculate CarryForward
+            if (actualSalaryPaid > calculatedSalary) {
+                double carryForward = actualSalaryPaid - calculatedSalary;
+                setValueAt(carryForward, row, 10); // Set CarryForward in the third column
+            } else {
+                setValueAt(0, row, 10); // If not greater, set CarryForward to 0
+            }
+                break;
             default:
+
                 super.setValueAt(aValue, row, column);
                 break;
         }

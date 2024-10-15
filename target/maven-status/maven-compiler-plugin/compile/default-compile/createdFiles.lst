@@ -1,6 +1,7 @@
 com/mycompany/views/MainView$6.class
 com/mycompany/views/AddAdvance.class
 com/mycompany/database/SQLConnection.class
+com/mycompany/views/AddEmployee$10.class
 com/mycompany/views/AddAdvance$2.class
 com/mycompany/utils/IconSetter.class
 com/mycompany/views/AddEmployee$2.class
@@ -31,6 +32,7 @@ com/mycompany/views/ViewMessCharges$1.class
 com/mycompany/views/AddEmployee$4.class
 com/mycompany/views/MainView$1.class
 com/mycompany/utils/ExcelExporter.class
+com/mycompany/views/ViewPayRoll$6.class
 com/mycompany/views/AddEmployee$7.class
 com/mycompany/views/AddDeduction$1.class
 com/mycompany/dao/DepartmentDAO.class

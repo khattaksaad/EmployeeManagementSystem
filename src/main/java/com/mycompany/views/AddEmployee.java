@@ -17,6 +17,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -59,7 +60,7 @@ EmployeeDAO employeeDAO;
         catch (SQLException e) {
             e.printStackTrace();
         }
-        setEmployeeTableModel(jTable1, employees);
+
         // Initialize labels and text fields
         //lblEmployeeID = new JLabel("Employee ID:");
         
@@ -94,10 +95,19 @@ EmployeeDAO employeeDAO;
             deductions = ao.getAllOtherDeductions();
             advanceList = ad.getAllAdvances();
             messCharges = dao.getAllMessCharges();
+                    setEmployeeTableModel(jTable1, employees);
     }
 // Method to set the JTable model from List<Employee>
     public static void setEmployeeTableModel(JTable table, List<Employee> employees) {
         // Create a DefaultTableModel with column names
+            // Get the current date
+    LocalDate currentDate = LocalDate.now();
+    
+    // Get the current month as an integer (1 for January, 2 for February, etc.)
+    int currentMonth = currentDate.getMonthValue();
+    
+    // Get the current year as an integer
+    int currentYear = currentDate.getYear();
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Name");
         model.addColumn("Father Name");
@@ -114,9 +124,9 @@ EmployeeDAO employeeDAO;
             int totalAdvance = 0;
             int totalDeductions = 0;
             int messBill = 0;
-            totalAdvance = CalculateUtils.CalculateAdvance(advanceList,employee, totalAdvance);
-            totalDeductions = CalculateUtils.CalculateDeduction(deductions,employee, totalDeductions);
-            messBill = CalculateUtils.CalculateMessCharges(messCharges,employee, messBill);
+            totalAdvance = CalculateUtils.CalculateAdvance(advanceList,employee, totalAdvance, currentMonth, currentYear);
+            totalDeductions = CalculateUtils.CalculateDeduction(deductions,employee, totalDeductions, currentMonth, currentYear);
+            messBill = CalculateUtils.CalculateMessCharges(messCharges,employee, messBill, currentMonth, currentYear);
             model.addRow(new Object[] {
                 employee.getName(),
                 employee.getFathersName(),
@@ -149,8 +159,8 @@ EmployeeDAO employeeDAO;
                     DateUtil.GetDateforDateChooser(jDateChooserDateOfJoining),
                     DateUtil.GetDateforDateChooser(jDateChooserDateOfTermination),
                     jTextFieldQualification.getText(),
-                    Double.parseDouble(jTextFieldSalary.getText()),
-                    Integer.parseInt(jTextFieldCarryForward.getText())
+                    RestrictionUtil.AddZeroWhenEmpty(jTextFieldSalary),
+                    RestrictionUtil.AddZeroWhenEmpty(jTextFieldCarryForward)
             );
             boolean success = employeeDAO.addEmployee(employee);
             JOptionPane.showMessageDialog(this, success ? "Employee added successfully" : "Failed to add employee");
@@ -171,8 +181,8 @@ EmployeeDAO employeeDAO;
                     DateUtil.GetDateforDateChooser(jDateChooserDateOfJoining),
                     DateUtil.GetDateforDateChooser(jDateChooserDateOfTermination),
                     jTextFieldQualification.getText(),
-                    Double.parseDouble(jTextFieldSalary.getText()),
-                    Double.parseDouble(jTextFieldCarryForward.getText())
+                    RestrictionUtil.AddZeroWhenEmpty(jTextFieldSalary),
+                    RestrictionUtil.AddZeroWhenEmpty(jTextFieldCarryForward)
             );
             employee.setEmployeeID(Integer.parseInt(jTextFieldEmployeeID.getText()));
             boolean success = employeeDAO.updateEmployee(employee);
@@ -253,6 +263,7 @@ EmployeeDAO employeeDAO;
         jLabelRefName = new javax.swing.JLabel();
         jDateChooserDateOfJoining = new com.toedter.calendar.JDateChooser();
         jDateChooserDateOfTermination = new com.toedter.calendar.JDateChooser();
+        clearFieldsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(452, 536));
@@ -309,6 +320,9 @@ EmployeeDAO employeeDAO;
         jLabelCNIC.setText("CNIC:");
 
         jButtonDelete.setText("Delete Employee");
+        jButtonDelete.setMaximumSize(new java.awt.Dimension(144, 23));
+        jButtonDelete.setMinimumSize(new java.awt.Dimension(144, 23));
+        jButtonDelete.setPreferredSize(new java.awt.Dimension(144, 23));
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
@@ -316,6 +330,9 @@ EmployeeDAO employeeDAO;
         });
 
         jButtonUpdate.setText("Update Employee");
+        jButtonUpdate.setMaximumSize(new java.awt.Dimension(144, 23));
+        jButtonUpdate.setMinimumSize(new java.awt.Dimension(144, 23));
+        jButtonUpdate.setPreferredSize(new java.awt.Dimension(144, 23));
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -337,14 +354,24 @@ EmployeeDAO employeeDAO;
 
         jLabelRefName.setText("Reference Name:");
 
+        clearFieldsButton.setText("Clear");
+        clearFieldsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearFieldsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(376, 869, Short.MAX_VALUE)
-                .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(clearFieldsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,12 +401,12 @@ EmployeeDAO employeeDAO;
                             .addComponent(jTextFieldCNIC))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonGetAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonAdd)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonUpdate)
+                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonDelete)
+                        .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -390,51 +417,57 @@ EmployeeDAO employeeDAO;
                     .addComponent(jButtonGetAll)
                     .addComponent(jTextFieldCNIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCNIC))
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
+                .addComponent(clearFieldsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelFatherName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldRefName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelRefName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jDateChooserDateOfJoining, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelDateOfJoining))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelDateOfTermination)
+                            .addComponent(jDateChooserDateOfTermination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelName))
+                            .addComponent(jTextFieldSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSalary))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelFatherName))
+                            .addComponent(jTextFieldQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelQualification))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldRefName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelRefName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooserDateOfJoining, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelDateOfJoining))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelDateOfTermination)
-                    .addComponent(jDateChooserDateOfTermination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSalary))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelQualification))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBonus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCarryForward, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCarryForward))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdd)
-                    .addComponent(jButtonUpdate)
-                    .addComponent(jButtonDelete))
-                .addGap(41, 41, 41))
+                            .addComponent(jTextFieldBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBonus))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCarryForward, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelCarryForward))
+                        .addGap(41, 79, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAdd))
+                        .addGap(21, 21, 21))))
         );
 
         jTabbedPane2.addTab("Manage Employee", jPanel1);
@@ -493,6 +526,23 @@ EmployeeDAO employeeDAO;
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void clearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFieldsButtonActionPerformed
+// Clear all text fields by setting them to empty strings
+    jTextFieldName.setText("");
+    jTextFieldRefName.setText("");
+    jTextFieldFatherName.setText("");
+    jTextFieldCNIC.setText("");
+    // Assuming jDateChooserDateOfJoining and jDateChooserDateOfTermination
+    // are components for selecting dates, you can also clear them:
+    jDateChooserDateOfJoining.setDate(null); // Clear the date chooser
+    jDateChooserDateOfTermination.setDate(null); // Clear the date chooser
+    
+    jTextFieldSalary.setText("");
+    jTextFieldQualification.setText("");
+    jTextFieldCarryForward.setText("");
+    jTextFieldEmployeeID.setText("");
+    }//GEN-LAST:event_clearFieldsButtonActionPerformed
     private void SetFields(Employee employee){
         jTextFieldName.setText(employee.getName());
         jTextFieldRefName.setText(employee.getReferenceName());
@@ -546,6 +596,7 @@ EmployeeDAO employeeDAO;
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearFieldsButton;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonDelete1;

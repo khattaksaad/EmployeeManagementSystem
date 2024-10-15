@@ -14,8 +14,9 @@ import java.sql.SQLException;
  * @author hirraabdulmalik
  */
 public class SQLConnection {
-    
-                static URL resource = SQLConnection.class.getResource("/database/salary_management.db");
+
+static String dbPath = "/Applications/DB/salary_management.db";   
+                //static URL resource = SQLConnection.class.getResource("/Applications/DB/salary_management.db");
 
     
     //private static final String URL = "jdbc:sqlite:salary_management.db";
@@ -24,12 +25,15 @@ public class SQLConnection {
         Connection conn = null;
         try {
             
-            if (resource == null) {
-                throw new SQLException("Database file not found!");
+            File dbFile = new File(dbPath);
+
+            // Check if the file exists
+            if (!dbFile.exists()) {
+                 throw new SQLException("Database file not found at: " + dbPath);
             }
 
             // Convert resource URL to file path
-            File dbFile = new File(resource.toURI());
+            //File dbFile = new File(resource.toURI());
 
             // Establish SQLite connection
             String url = "jdbc:sqlite:" + dbFile.getAbsolutePath();

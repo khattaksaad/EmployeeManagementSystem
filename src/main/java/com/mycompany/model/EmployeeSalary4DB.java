@@ -17,15 +17,17 @@ public class EmployeeSalary4DB {
     private double actualPaidSalary;
     private int employeeID;
     private String salaryDate;
+    private double carryForward;
 
     // Constructor
-    public EmployeeSalary4DB(int id, double bonus, double totalSalary, double actualPaidSalary, int employeeID, String salaryDate) {
+    public EmployeeSalary4DB(int id, double bonus, double totalSalary, double actualPaidSalary, int employeeID, String salaryDate, double carryForward) {
         this.id = id;
         this.bonus = bonus;
         this.totalSalary = totalSalary;
         this.employeeID = employeeID;
         this.actualPaidSalary = actualPaidSalary;
         this.salaryDate = salaryDate;
+        this.carryForward = carryForward;
     }
 
     // Getters and Setters
@@ -81,5 +83,19 @@ public class EmployeeSalary4DB {
      */
     public void setActualPaidSalary(double actualPaidSalary) {
         this.actualPaidSalary = actualPaidSalary;
+    }
+
+    /**
+     * @return the carryForward
+     */
+    public double getCarryForward() {
+        return carryForward;
+    }
+
+    /**
+     * @param carryForward the carryForward to set
+     */
+    public void setCarryForward(double carryForward) {
+        this.carryForward = carryForward;
     }
 }

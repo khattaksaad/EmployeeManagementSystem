@@ -16,4 +16,5 @@ public class TableUtils {
         TableColumn column = table.getColumnModel().getColumn(columnIndex);
         table.getColumnModel().removeColumn(column);
     }
+    
 }

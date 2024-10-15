@@ -9,11 +9,15 @@ import com.mycompany.model.*;
 import com.mycompany.utils.*;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -40,8 +44,10 @@ public class ViewPayRoll extends javax.swing.JFrame {
     public ViewPayRoll() throws SQLException {
         initComponents();
         jComboBoxMonth.removeAllItems();
+        jComboBoxMonth1.removeAllItems();
         for(String st : months){
             jComboBoxMonth.addItem(st);
+            jComboBoxMonth1.addItem(st);
         }
         employees = new EmployeeDAO().getAllEmployees();
         allMessCharges= new MessChargeDAO().getAllMessCharges();
@@ -76,6 +82,7 @@ public class ViewPayRoll extends javax.swing.JFrame {
         jComboBoxMonth1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +164,13 @@ public class ViewPayRoll extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jTable2);
 
+        jButton3.setText("Close");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -169,6 +183,10 @@ public class ViewPayRoll extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonViewArchive, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 646, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(3, 3, 3)
@@ -183,7 +201,8 @@ public class ViewPayRoll extends javax.swing.JFrame {
                     .addComponent(jButtonViewArchive)
                     .addComponent(jSpinnerYear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 530, Short.MAX_VALUE)
+                .addComponent(jButton3))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(35, 35, 35)
@@ -237,7 +256,7 @@ public class ViewPayRoll extends javax.swing.JFrame {
         boolean success = true;
         for(EmployeeSalary empS : empSalaries){
             //double bonus, double totalSalary, int employeeID, Date salaryDate
-            EmployeeSalary4DB emp4DB = new EmployeeSalary4DB(0, empS.getBonus(), empS.getTotalSalaryCalculated(), empS.getActualPaidSalary(), empS.getEmployeeId(),DateUtil.GetTodayAsString());
+            EmployeeSalary4DB emp4DB = new EmployeeSalary4DB(0, empS.getBonus(), empS.getTotalSalaryCalculated(), empS.getActualPaidSalary(), empS.getEmployeeId(),DateUtil.GetTodayAsString(),empS.getPreviousLoan());
 
             try {
                 empD.createEmployeeSalary(emp4DB);
@@ -263,8 +282,18 @@ public class ViewPayRoll extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGenerateSalaryActionPerformed
 
     private void jButtonViewArchiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewArchiveActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            setPastEmployeeSalaryTableModel(jTable2);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonViewArchiveActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
     public void setEmployeeSalaryTableModel(JTable table) {
         // Create a DefaultTableModel with column names
         // Create an instance of the custom table model
@@ -274,23 +303,32 @@ public class ViewPayRoll extends javax.swing.JFrame {
         model.addColumn("Name");
         model.addColumn("Monthly Salary");
         model.addColumn("Bonus");
-       model.addColumn("Previous Loan");
+        model.addColumn("Previous Loan");
         model.addColumn("Advance during month");
         model.addColumn("Deduction");
         model.addColumn("Mess Bill");
         model.addColumn("Calculated Salary");
         model.addColumn("Actual paid");
         model.addColumn("Carry Forward");
+        String selectedMonth = (String) jComboBoxMonth.getSelectedItem(); // Get selected month as a string
+        int monthNumber = DateUtil.getMonthNumber(selectedMonth); // Convert to month number
+        int selectedYear = 0;
+        String yearString = (String) jSpinnerYear.getValue(); // Get the value as a String
+try {
+     selectedYear = Integer.parseInt(yearString); // Parse the String to int
+} catch (NumberFormatException e) {
+     Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, e);
+}
         // Add rows from the List<Employee>
         for (Employee employee : employees) {
 
             int totalAdvance = 0;
             int totalDeductions = 0;
             int messBill = 0;
-            int bonus = 0;
-            totalAdvance = CalculateUtils.CalculateAdvance(allAdvances, employee, totalAdvance);
-            totalDeductions = CalculateUtils.CalculateDeduction(allDeductions, employee, totalDeductions);
-            messBill = CalculateUtils.CalculateMessCharges(allMessCharges, employee, messBill);
+            int bonus = 0;            
+            totalAdvance = CalculateUtils.CalculateAdvance(allAdvances, employee, totalAdvance,monthNumber,selectedYear);
+            totalDeductions = CalculateUtils.CalculateDeduction(allDeductions, employee, totalDeductions,monthNumber,selectedYear);
+            messBill = CalculateUtils.CalculateMessCharges(allMessCharges, employee, messBill,monthNumber,selectedYear);
             double totalCalculatedSalary = employee.getSalaryDecided() + bonus - (totalAdvance + totalDeductions + messBill +employee.getPreviousLoan());
                                 EmployeeSalary empSalary = new EmployeeSalary();
         empSalary.setName(employee.getName());
@@ -322,7 +360,66 @@ public class ViewPayRoll extends javax.swing.JFrame {
 
         // Set the model to the JTable
         table.setModel(model);
-        TableUtils.hideColumn(jTable1, 0);
+        TableUtils.hideColumn(table, 0);
+    }
+        public void setPastEmployeeSalaryTableModel(JTable table) throws SQLException {
+        // Create a DefaultTableModel with column names
+        // Create an instance of the custom table model
+        List<EmployeeSalary4DB> employee4Salaries = EmployeeSalaryDAO.getAllEmployeeSalaries();
+        DefaultTableModel model = new DefaultTableModel();
+        //DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("EmployeeID");
+        model.addColumn("Name");
+        model.addColumn("Monthly Salary");
+        model.addColumn("Bonus");
+
+        model.addColumn("Calculated Salary");
+        model.addColumn("Actual paid Salary");
+        model.addColumn("Carry Forward");
+        String selectedMonth = (String) jComboBoxMonth1.getSelectedItem(); // Get selected month as a string
+        int monthNumber = DateUtil.getMonthNumber(selectedMonth); // Convert to month number
+        int selectedYear = 0;
+        String yearString = (String) jSpinnerYear1.getValue(); // Get the value as a String
+try {
+     selectedYear = Integer.parseInt(yearString); // Parse the String to int
+} catch (NumberFormatException e) {
+Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, e);
+}
+        employee4Salaries = filterEmployeeSalary4DBByMonthAndYear(employee4Salaries, monthNumber, selectedYear);
+        // Add rows from the List<Employee>
+        for (EmployeeSalary4DB employee4DB : employee4Salaries) {
+// Using Streams to find employee with ID 1
+        Optional<String> empName = employees.stream()
+                .filter(employee -> employee.getEmployeeID()== employee4DB.getEmployeeID())
+                .map(Employee::getName)
+                .findFirst();
+        Optional<Double> empSalary = employees.stream()
+                .filter(employee -> employee.getEmployeeID()== employee4DB.getEmployeeID())
+                .map(Employee::getSalaryDecided)
+                .findFirst();
+            model.addRow(new Object[] {
+                employee4DB.getEmployeeID(),
+                empName.get(),
+                empSalary.get(),
+                employee4DB.getBonus(),
+                employee4DB.getTotalSalary(),
+                employee4DB.getActualPaidSalary(),
+                employee4DB.getCarryForward(),
+            });
+        }
+
+        // Set the model to the JTable
+        table.setModel(model);
+        TableUtils.hideColumn(table, 0);
+    }
+        public static List<EmployeeSalary4DB> filterEmployeeSalary4DBByMonthAndYear(List<EmployeeSalary4DB> employeeSalary4DBs, int month, int year) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return employeeSalary4DBs.stream()
+            .filter(employeeSalary4DB -> {
+                LocalDate date = LocalDate.parse(employeeSalary4DB.getSalaryDate(), formatter);
+                return date.getMonthValue() == month && date.getYear() == year;
+            })
+            .collect(Collectors.toList());
     }
     private List<EmployeeSalary> GetEmployeeSalaryObjectsFromTableAfterEdit()
     {
@@ -349,7 +446,7 @@ else{
             Object ob2 = jTable1.getValueAt(row, 9);  // Object containing Integer
             Double carryForward = 0.0;
 if (ob2 instanceof Integer) {
-    actualPaidSalary = ((Integer) ob2).doubleValue();  // Proper conversion
+    carryForward = ((Integer) ob2).doubleValue();  // Proper conversion
 }
 else{
     carryForward = (Double) jTable1.getValueAt(row, 9);
@@ -364,7 +461,7 @@ else{
     }    private void PutCarryForwardForAllEmployees(EmployeeSalary empS){
             
                     try {
-                EmployeeDAO.updateCarryForwardForEmployee(empS.getCarryForward(), empS.getEmployeeId());
+                EmployeeDAO.updateCarryForwardForEmployee(empS.getPreviousLoan(), empS.getEmployeeId());
             } catch (SQLException ex) {
                 Logger.getLogger(ViewPayRoll.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -410,6 +507,7 @@ else{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonGenerateSalary;
     private javax.swing.JButton jButtonPaySalary;
     private javax.swing.JButton jButtonViewArchive;

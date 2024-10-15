@@ -7,6 +7,7 @@ package com.mycompany.utils;
 import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -41,4 +42,9 @@ public class DateUtil {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return formatter.format(today);
     }
+    public static int getMonthNumber(String monthName) {
+    // Convert the month name to uppercase to match the Month enum
+    Month month = Month.valueOf(monthName.toUpperCase());
+    return month.getValue(); // Returns the month as an integer (1 for January, 2 for February, etc.)
+}
 }

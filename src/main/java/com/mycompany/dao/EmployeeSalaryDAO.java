@@ -19,7 +19,7 @@ public class EmployeeSalaryDAO {
     // Method to create a new EmployeeSalary record
     public boolean createEmployeeSalary(EmployeeSalary4DB employeeSalary) throws SQLException {
         boolean result = true;
-        String sql = "INSERT INTO EmployeeSalary (Bonus, TotalCalculatedSalary, ActualPaidSalary, EmployeeID, SalaryDate) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO EmployeeSalary (Bonus, TotalCalculatedSalary, ActualPaidSalary, EmployeeID, SalaryDate, CarryForward) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = SQLConnection.connect(); // Establish connection here
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setDouble(1, employeeSalary.getBonus());
@@ -27,6 +27,7 @@ public class EmployeeSalaryDAO {
             pstmt.setDouble(3, employeeSalary.getActualPaidSalary());
             pstmt.setInt(4, employeeSalary.getEmployeeID());
             pstmt.setString(5, (employeeSalary.getSalaryDate()));
+            pstmt.setDouble(6, employeeSalary.getCarryForward());
             pstmt.executeUpdate();
         }
         
@@ -34,7 +35,7 @@ public class EmployeeSalaryDAO {
     }
 
     // Method to read all EmployeeSalary records
-    public List<EmployeeSalary4DB> getAllEmployeeSalaries() throws SQLException {
+    public static List<EmployeeSalary4DB> getAllEmployeeSalaries() throws SQLException {
         List<EmployeeSalary4DB> employeeSalaries = new ArrayList<>();
         String sql = "SELECT * FROM EmployeeSalary";
 
@@ -49,8 +50,8 @@ public class EmployeeSalaryDAO {
                 double actualPaidSalary = rs.getDouble("actualPaidSalary");
                 int employeeID = rs.getInt("EmployeeID");
                 String salaryDate = rs.getString("SalaryDate");
-
-                EmployeeSalary4DB employeeSalary = new EmployeeSalary4DB(id, bonus, totalSalary,actualPaidSalary, employeeID, salaryDate);
+                double carryForward = rs.getDouble("CarryForward");
+                EmployeeSalary4DB employeeSalary = new EmployeeSalary4DB(id, bonus, totalSalary,actualPaidSalary, employeeID, salaryDate,carryForward);
                 employeeSalaries.add(employeeSalary);
             }
         }
